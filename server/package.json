@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "nodemon server.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "puppeteer": "^21.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
