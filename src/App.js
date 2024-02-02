@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useSpring, animated } from 'react-spring';
 import background from './images/background.jpg';
 
 import React, { useEffect, useState } from 'react';
@@ -44,7 +45,9 @@ const App = () => {
         </div>
         <div className="content">
           {loading ? <>
-            <p>Carregando dados...</p>
+            <LoadingCpu loadingSkeleton = {1} />
+            <LoadingCpu loadingSkeleton = {2} />
+            <LoadingCpu loadingSkeleton = {3} />
           </>
             : <></>}
 
@@ -54,8 +57,8 @@ const App = () => {
                 <h1>{dados['cpuName']}</h1>
                 <h3>Preço: {dados['cpuPrice']}</h3>
                 <img src={dados['cpuImage']}></img>
-                <p>Desempenho: {dados['performanceRating']}</p> 
-                <p>CxB: {dados['costRating']}</p>
+                <p>Desempenho: {dados['performanceRating']}</p>
+                <p>Custo Benefício: {dados['costRating']}</p>
                 <p>{dados['cpuSpecs']}</p>
                 <p>Pontuação (CPU Mark): {dados['cpuScore']}</p>
               </div>
@@ -87,6 +90,27 @@ const App = () => {
     </div>
   );
 };
+
+function LoadingCpu({ loadingSkeleton }) {
+  const loadingClass = `loading-skeleton${loadingSkeleton}`
+  const animatedStyles = useSpring({
+    loop: true,
+    to: [
+      { backgroundColor: '#808080' },
+      { backgroundColor: '#c6c6c6' }
+    ],
+    from: { backgroundColor: '#c6c6c6' },
+  });
+
+  return (
+    <div className="loading-skeleton-container">
+      <div className="loading-skeleton-box">
+        <animated.div className={loadingClass} style={{ ...animatedStyles }
+        }></animated.div>
+      </div>
+    </div>
+  )
+}
 
 async function listCpu() {
   const response = await fetch('http://localhost:3001/cpulist');

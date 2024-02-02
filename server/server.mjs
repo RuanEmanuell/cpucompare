@@ -101,7 +101,7 @@ async function fetchData(cpuName) {
     let costCalc = price.substring(2);
     costCalc = costCalc.replaceAll('.', '');
     costCalc = parseInt(costCalc);
-    costCalc = Math.round(performanceCalc * 900 / costCalc);
+    costCalc = Math.floor(performanceCalc * 900 / costCalc);
 
     if(costCalc > 5){
         costCalc = 5;
