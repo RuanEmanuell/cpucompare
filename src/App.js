@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div className="container" style={{
       backgroundImage: `url(${background})`,
-      backgroundSize: 'cover'
+      backgroundSize: 'fill'
     }}>
       <div className="div1">
         <div className="navbar"></div>
@@ -58,18 +58,22 @@ const App = () => {
               </div>
             </div>
             : <></>}
-          <div className="search-box-container">
-            <div className="search-box">
-              <input value={inputValue} onChange={handleInputChange}></input>
-              {cpuSelectList.map((cpuSelect, index) => (
-                <div key={index} onClick={() => {
-                  setInputValue(cpuSelect['cpu']);
-                  setCpuList([]);
-                }}>
-                  {cpuSelect['cpu']}
-                </div>
-              ))}
-              <button onClick={clickSearchCpu}>Pesquisar</button>
+          <div className="search-box">
+            <div className="input-button">
+              <input value={inputValue} onChange={handleInputChange} className="search-input" placeholder="Digite um processador..."></input>
+              <button onClick={clickSearchCpu} className="search-button">Pesquisar</button>
+            </div>
+            <div className="cpu-suggestions-box">
+              <div className="cpu-suggestions">
+                {cpuSelectList.map((cpuSelect, index) => (
+                  <div key={index} onClick={() => {
+                    setInputValue(cpuSelect['cpu']);
+                    setCpuList([]);
+                  }} className="suggestion">
+                    <h4>{cpuSelect['brand']} {cpuSelect['cpu']}</h4>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
