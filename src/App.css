@@ -40,12 +40,12 @@ main{
 }
 
 .cpu-box{
-  background-color: black;
   margin: 10px;
   padding: 10px;
   border-radius: 50px;
   width: 100%;
   max-width: 700px;
+  height: 50%;
 }
 
 .cpu-box img{
@@ -95,6 +95,7 @@ main{
 }
 
 .search-button:hover{
+  cursor: pointer;
   background-color: grey;
   color: white;
 }

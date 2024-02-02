@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div className="container" style={{
       backgroundImage: `url(${background})`,
-      backgroundSize: 'fill'
+      backgroundSize: 'cover'
     }}>
       <div className="div1">
         <div className="navbar"></div>
@@ -54,6 +54,9 @@ const App = () => {
                 <h1>{dados['cpuName']}</h1>
                 <h3>Preço: {dados['cpuPrice']}</h3>
                 <img src={dados['cpuImage']}></img>
+                <p>Desempenho: {dados['performanceRating']}</p> 
+                <p>CxB: {dados['costRating']}</p>
+                <p>{dados['cpuSpecs']}</p>
                 <p>Pontuação (CPU Mark): {dados['cpuScore']}</p>
               </div>
             </div>

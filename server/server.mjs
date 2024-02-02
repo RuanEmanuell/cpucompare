@@ -47,12 +47,12 @@ const cpuList = [
 
 async function fetchData(cpuName) {
     let cpuIndex = -1;
-    function formatString(string){
+    function formatString(string) {
         let formatedString = string.toLowerCase().replaceAll(' ', '').trim();
         return formatedString;
     }
-    for (var i=0; i<cpuList.length; i++){
-        if(formatString(cpuList[i]['cpu']) == formatString(cpuName)){
+    for (var i = 0; i < cpuList.length; i++) {
+        if (formatString(cpuList[i]['cpu']) == formatString(cpuName)) {
             cpuIndex = i;
             break;
         }
@@ -76,8 +76,43 @@ async function fetchData(cpuName) {
 
 
     const score = await page.$eval('.right-desc span:nth-child(3)', (span) => span.innerText);
+    
+    let cores;
+    if (await page.$('.mobile-column')) {
+        cores = (await page.$eval('.mobile-column', (p) => p.innerText))
+    } else {
+        cores = await page.$eval('.desc-body .desc-foot:nth-child(4) p', (p) => p.innerText);
+        cores = cores.substring(cores.length - 21);
+    }
 
-    return { cpuName: name, cpuPrice: price, cpuImage: image, cpuScore: score, cpuBrand: brand};
+    let performanceCalc = Math.ceil(parseInt(score) / 6000);
+
+    if(performanceCalc > 5){
+        performanceCalc = 5;
+    }
+
+    let performance = '⭐';
+
+    for(var i=1; i<performanceCalc; i++){
+        performance = performance + '⭐';
+    }
+
+    let cost = '⭐';
+    let costCalc = price.substring(2);
+    costCalc = costCalc.replaceAll('.', '');
+    costCalc = parseInt(costCalc);
+    costCalc = Math.round(performanceCalc * 900 / costCalc);
+
+    if(costCalc > 5){
+        costCalc = 5;
+    }
+
+
+    for(var i=1; i<costCalc; i++){
+        cost = cost + '⭐';
+    }
+
+    return { cpuName: name, cpuPrice: price, cpuImage: image, cpuSpecs: cores, cpuScore: score, cpuBrand: brand, performanceRating: performance, costRating: cost};
 }
 
 app.get('/cpulist', async (req, res) => {
