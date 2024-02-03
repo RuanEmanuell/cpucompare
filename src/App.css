@@ -26,6 +26,7 @@ main{
 }
 
 .navbar h1{
+  margin: auto;
   font-size: 1em;
 }
 
@@ -34,7 +35,7 @@ main{
 }
 
 .logo{
-  width: 50%;
+  width: 70%;
   max-width: 500px;
 }
 
@@ -58,6 +59,7 @@ main{
   border: 5px solid grey;
   border-radius: 10px;
   height: 60%;
+  width: 50%;
 }
 
 .search-box{
@@ -133,6 +135,9 @@ main{
   border: 1px solid rgba(0, 0, 0, 0.014);
 }
 
+.suggestion:last-child{
+  padding-bottom: 15px;
+}
 
 .suggestion:hover{
   cursor: pointer;
@@ -147,17 +152,20 @@ main{
 .loading-skeleton1{
   height: 10vh;
   width: 80%;
+  min-width: 275px;
   border-radius: 10px;
 }
 
 .loading-skeleton2{
   height: 40vh;
   width: 60%;
+  min-width: 275px;
   border-radius: 10px;
 }
 
 .loading-skeleton3{
   height: 10vh;
   width: 50%;
+  min-width: 250px;
   border-radius: 10px;
 }
