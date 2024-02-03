@@ -18,7 +18,7 @@ Bibliotecas/pacotes usados: Puppeteer (para webscrapping), ReactSpring (para ani
      Execute o servidor NodeJS com 'npm run dev'.
      Acesse http://localhost:3000 no seu navegador.
     
-### Aqui estão algumas prints do projeto rodando:
+### Aqui estão algumas imagens do projeto rodando:
 
 ![Screenshot_584](https://github.com/RuanEmanuell/cpucompare/assets/113607857/06df708e-edf5-429a-a7c8-f41e55516558)
 ![Screenshot_585](https://github.com/RuanEmanuell/cpucompare/assets/113607857/0895684e-91da-4a1d-87a8-6af48cf1d60b)
