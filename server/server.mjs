@@ -14,6 +14,12 @@ const cpuList = [
         benchmarkLink: 'https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+5+4600G&id=3807'
     },
     {
+        cpu: 'Ryzen 5 5500',
+        brand: 'AMD',
+        shopLink: 'https://www.kabum.com.br/produto/320799/processador-amd-ryzen-5-5500-3-6ghz-4-2ghz-max-turbo-cache-19mb-am4-sem-video-100-100000457box',
+        benchmarkLink: 'https://www.cpubenchmark.net/cpu.php?id=4807&cpu=AMD+Ryzen+5+5500'
+    },
+    {
         cpu: 'Ryzen 5 5600',
         brand: 'AMD',
         shopLink: 'https://www.kabum.com.br/produto/320798/processador-amd-ryzen-5-5600-3-5ghz-4-4ghz-max-turbo-cache-35mb-am4-sem-video-100-100000927box',
@@ -36,6 +42,12 @@ const cpuList = [
         brand: 'Intel',
         shopLink: 'https://www.kabum.com.br/produto/283718/processador-intel-core-i5-12400f-2-5ghz-4-4ghz-max-turbo-cache-18mb-lga-1700-bx8071512400f',
         benchmarkLink: 'https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i5-12400F&id=4681'
+    },
+    {
+        cpu: 'Core i9 13900K',
+        brand: 'Intel',
+        shopLink: 'https://www.kabum.com.br/produto/386971/processador-intel-core-i9-13900k-13-geracao-5-8ghz-max-turbo-cache-36mb-24-nucleos-lga-1700-video-integrado-bx8071513900k',
+        benchmarkLink: 'https://www.cpubenchmark.net/cpu.php?id=5022&cpu=Intel+Core+i9-13900K'
     },
     {
         cpu: 'Core i7 14700K',
@@ -101,7 +113,7 @@ async function fetchData(cpuName) {
     let costCalc = price.substring(2);
     costCalc = costCalc.replaceAll('.', '');
     costCalc = parseInt(costCalc);
-    costCalc = Math.floor(performanceCalc * 900 / costCalc);
+    costCalc = Math.round(performanceCalc * 900 / costCalc);
 
     if(costCalc > 5){
         costCalc = 5;
@@ -130,6 +142,11 @@ app.get('/cpulist/ryzen54600g', async (req, res) => {
     res.json(data);
 });
 
+app.get('/cpulist/ryzen55500', async (req, res) => {
+    const data = await fetchData('ryzen55500');
+    res.json(data);
+});
+
 app.get('/cpulist/ryzen55600', async (req, res) => {
     const data = await fetchData('ryzen55600');
     res.json(data);
@@ -142,6 +159,11 @@ app.get('/cpulist/corei310100f', async (req, res) => {
 
 app.get('/cpulist/corei512400f', async (req, res) => {
     const data = await fetchData('corei512400f');
+    res.json(data);
+});
+
+app.get('/cpulist/corei913900k', async (req, res) => {
+    const data = await fetchData('corei913900k');
     res.json(data);
 });
 

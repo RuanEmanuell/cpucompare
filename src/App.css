@@ -33,7 +33,12 @@ main{
   background-color: rgba(59, 59, 59, 0.842);
 }
 
-.cpu-box-container, .search-box-container, .loading-skeleton-container{
+.logo{
+  width: 50%;
+  max-width: 500px;
+}
+
+.cpu-box-container, .search-box-container, .loading-skeleton-container, .logo-container{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -75,7 +80,7 @@ main{
   color: rgb(165, 165, 165);
 }
 
-.input-button, .cpu-suggestions-box{
+.input-button{
   display: flex;
   justify-content: center;
 }
@@ -96,17 +101,30 @@ main{
 
 .search-button:hover{
   cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.search-button:disabled{
+  cursor: not-allowed;
   background-color: grey;
-  color: white;
+  color: rgb(77, 77, 77);
+}
+
+.cpu-suggestions-box{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .cpu-suggestions{
   background-color: white;
   color: black;
-  width: 30%;
+  width: 25%;
+  min-width: 150px;
   max-width: 400px;
-  margin-right: calc(50px + 2vw);
   height: 100%;
+  margin-right: calc(75px + 0.5%);
 }
 
 .suggestion{
@@ -114,6 +132,7 @@ main{
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.014);
 }
+
 
 .suggestion:hover{
   cursor: pointer;

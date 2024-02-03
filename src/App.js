@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useSpring, animated } from 'react-spring';
+import logo from './images/logo.png';
 import background from './images/background.jpg';
 
 import React, { useEffect, useState } from 'react';
@@ -45,9 +45,9 @@ const App = () => {
         </div>
         <div className="content">
           {loading ? <>
-            <LoadingCpu loadingSkeleton = {1} />
-            <LoadingCpu loadingSkeleton = {2} />
-            <LoadingCpu loadingSkeleton = {3} />
+            <LoadingCpu loadingSkeleton={1} />
+            <LoadingCpu loadingSkeleton={2} />
+            <LoadingCpu loadingSkeleton={3} />
           </>
             : <></>}
 
@@ -63,25 +63,29 @@ const App = () => {
                 <p>Pontuação (CPU Mark): {dados['cpuScore']}</p>
               </div>
             </div>
-            : <></>}
-          <div className="search-box">
-            <div className="input-button">
-              <input value={inputValue} onChange={handleInputChange} className="search-input" placeholder="Digite um processador..."></input>
-              <button onClick={clickSearchCpu} className="search-button">Pesquisar</button>
-            </div>
-            <div className="cpu-suggestions-box">
-              <div className="cpu-suggestions">
-                {cpuSelectList.map((cpuSelect, index) => (
-                  <div key={index} onClick={() => {
-                    setInputValue(cpuSelect['cpu']);
-                    setCpuList([]);
-                  }} className="suggestion">
-                    <h4>{cpuSelect['brand']} {cpuSelect['cpu']}</h4>
-                  </div>
-                ))}
+            : <div className='logo-container'>
+              {!loading ? <img src={logo} className="logo"></img> : <></>}
+              </div>}
+          <search>
+            <div className="search-box">
+              <div className="input-button">
+                <input value={inputValue} onChange={handleInputChange} className="search-input" placeholder="Digite um processador..."></input>
+                <button onClick={clickSearchCpu} className="search-button" disabled = {loading}>Pesquisar</button>
+              </div>
+              <div className="cpu-suggestions-box">
+                <div className="cpu-suggestions">
+                  {cpuSelectList.map((cpuSelect, index) => (
+                    <div key={index} onClick={() => {
+                      setInputValue(cpuSelect['cpu']);
+                      setCpuList([]);
+                    }} className="suggestion">
+                      <h4>{cpuSelect['brand']} {cpuSelect['cpu']}</h4>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </search>
         </div>
       </main>
       <div className="div2">
@@ -123,12 +127,16 @@ async function searchCpu(value) {
   try {
     console.log(`http://localhost:3001/cpulist/${value}`);
     const response = await fetch(`http://localhost:3001/cpulist/${value}`);
+
+    if (!response.ok) {
+      alert(`Erro ${response.status}: Processador não encontrado.`);
+    }
+
     const data = await response.json();
-    JSON.stringify(data);
     console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
