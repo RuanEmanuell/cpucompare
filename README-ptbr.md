@@ -7,10 +7,8 @@ Isso é alcançado por meio de WebScrapping junto com a bibilioteca Puppeteer do
 dos processadores são pegos de lojas da internet e a pontuação de desempenho é feita com base no score do processador no CPUMark, com o CxB sendo calculado com base no preço e desempenho
 do mesmo. 
 
-Ainda em desenvolvimento.
-
 Tecnologias usadas: HTML, CSS, ReactJS, NodeJS, ExpressJS.
-Bibliotecas/pacotes usados: Puppeteer (para webscrapping), ReactSpring (para animações), NodeMon (atualização automática do servidor Node)
+Bibliotecas/pacotes usados: Puppeteer (para webscrapping), ReactSpring (para animações), Nodemon (atualização automática do servidor Node)
 
 ### Como rodar
 
@@ -20,4 +18,7 @@ Bibliotecas/pacotes usados: Puppeteer (para webscrapping), ReactSpring (para ani
      Execute o servidor NodeJS com 'npm run dev'.
      Acesse http://localhost:3000 no seu navegador.
     
-### Aqui estão algumas prints do projeto rodando (em breve)
+### Aqui estão algumas prints do projeto rodando:
+
+![Screenshot_584](https://github.com/RuanEmanuell/cpucompare/assets/113607857/06df708e-edf5-429a-a7c8-f41e55516558)
+![Screenshot_585](https://github.com/RuanEmanuell/cpucompare/assets/113607857/0895684e-91da-4a1d-87a8-6af48cf1d60b)
